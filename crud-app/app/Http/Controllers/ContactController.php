@@ -37,10 +37,11 @@ class ContactController extends Controller
      */
     public function store(Request $request)
     {
+
         $request->validate([
-            'first_name'=>'required',
-            'last_name'=>'required',
-            'email'=>'required'
+            'first_name'=> 'required|max:20|min:3',
+            'last_name'=> 'required|max:20|min:4',
+            'email'=> 'required|max:50|min:7'
 
         ]);
 
@@ -57,7 +58,7 @@ class ContactController extends Controller
         $contact -> save();
 
         return redirect('/contacts')->with('success','Contato Salvo !');
-        
+
     }
 
     /**
