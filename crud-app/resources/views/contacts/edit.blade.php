@@ -17,8 +17,8 @@
 		<br>
 		@endif
 
-		<form method="post" action="{{ route('contacts.update', $contact->id) }}">
-			
+		<form method="POST" action="{{ route('contacts.update', $contact->id) }}">
+
 			@method('PATCH')
 			@csrf
 			<div class="form-group">

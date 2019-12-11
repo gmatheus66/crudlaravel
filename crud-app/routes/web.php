@@ -19,3 +19,7 @@ Route::resource('contacts', 'ContactController');
 
 Route::apiResource('contacts', 'ContactController');
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

@@ -39,11 +39,26 @@ class ContactController extends Controller
     {
 
         $request->validate([
-            'first_name'=> 'required|max:20|min:3',
-            'last_name'=> 'required|max:20|min:4',
-            'email'=> 'required|max:50|min:7'
+            'first_name'=> 'required|string|max:20|min:4',
+            'last_name'=> 'required|string|max:20|min:4',
+            'email'=> 'required|email|max:50|min:7',
+            'job_title' => 'required|string|between:4,20',
+            'description' =>  'required_with:job_title,description|size:10',
+            'datanasc' => 'date|nullable',
+            'anotrab' => 'required|numeric'
 
         ]);
+
+        // string
+        //email
+        //min - max
+        // required
+        // between
+        // required_with
+        // date
+        //nullable
+        //numeric
+        //size
 
         $contact = new Contact([
             'first_name' => $request->get('first_name'),
@@ -51,7 +66,10 @@ class ContactController extends Controller
             'email' => $request->get('email'),
             'job_title'=> $request->get('job_title'),
             'city' => $request->get('city'),
-            'country' => $request->get('country')
+            'country' => $request->get('country'),
+            'description' => $request->get('description'),
+            'datanasc' => $request->get('datanasc'),
+            'anotrab' => $request->get('anotrab')
 
 
         ]);
@@ -93,7 +111,7 @@ class ContactController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate([
+        $request->validate([    
             'first_name'=>'required',
             'last_name'=>'required',
             'email'=>'required'

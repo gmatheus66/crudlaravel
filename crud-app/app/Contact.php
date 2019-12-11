@@ -12,6 +12,12 @@ class Contact extends Model
     	'email',
     	'city',
     	'country',
-    	'job_title'
+        'job_title',
+        'description',
+        'datanasc',
+        'anotrab'
+    ];
+    protected $guarded = [
+        'id'
     ];
 }
